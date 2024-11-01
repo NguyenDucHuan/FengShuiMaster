@@ -1,4 +1,4 @@
-const AdPackage = require('../models/adpackage');
+const AdPackage = require('../models/AdPackage');
 
 const getAllAdpackages = async () => {
     return new Promise(async (resolve, reject) => {

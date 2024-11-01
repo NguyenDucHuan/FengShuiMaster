@@ -1,3 +1,4 @@
+const { create } = require("../models/KoiFishBreed");
 var userService = require("../services/userService");
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
@@ -191,6 +192,27 @@ const calculateZodiac = async (req, res) => {
   }
 }
 
+const createConsultation = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const { timeBooked, description } = req.body;
+
+    if (!timeBooked || !description) {
+      return res.status(400).json({
+        errCode: 1,
+        message: 'Invalid input parameters'
+      });
+    }
+
+    const result = await userService.createConsultation(userId, timeBooked, description);
+
+    return res.status(200).json(result);
+  } catch (error) {
+    console.error('Error in createConsultation controller:', error);
+    return res.status(500).json({ errCode: 1, message: 'Server error', error: error.message });
+  }
+}
+
 const buyPackage = async (req, res) => {
   try {
     const result = await userService.buyPackage(req);
@@ -198,11 +220,11 @@ const buyPackage = async (req, res) => {
       case 0:
         return res.status(200).json(result);
       case 1:
-        return res.status(401).json(result); // User not found
+        return res.status(401).json(result); 
       case 2:
-        return res.status(402).json(result); // Package not found
+        return res.status(402).json(result); 
       case 3:
-        return res.status(403).json(result); // Insufficient balance
+        return res.status(403).json(result); 
       default:
         return res.status(500).json({ errCode: 1, message: 'Unknown error' });
     }
@@ -216,13 +238,29 @@ const buyPackage = async (req, res) => {
   }
 };
 
+const minusBalance = async (req, res) => {
+  try {
+    const id = req.user.id
+    const {amount} = req.body
+    const respone = await userService.minusBalance(id, amount)
+    return res.status(200).json(respone);
+  } catch (error) {
+    console.error('Error in minusBalance:', error);
+    return res.status(500).json({ errCode: 500, message: 'Server error', error: error.message
+    });
+  }
+}
+
+
 module.exports = {
-  handleLogin,
-  handleRegister,
-  handleForgotPassword,
-  getProfile,
-  updateProfile,
-  deleteAccount,
-  calculateZodiac,
-  buyPackage
+  handleLogin: handleLogin,
+  handleRegister: handleRegister,
+  handleForgotPassword: handleForgotPassword,
+  getProfile: getProfile,
+  updateProfile: updateProfile,
+  deleteAccount: deleteAccount,
+  calculateZodiac: calculateZodiac,
+  createConsultation,
+  buyPackage,
+  minusBalance
 };
