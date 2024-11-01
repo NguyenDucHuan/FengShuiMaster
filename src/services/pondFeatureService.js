@@ -2,7 +2,7 @@ const PondFuture = require("../models/PondFeature")
 
 const createPondFeature = async (targetType, value, status, zoldiacId) => {
     try {
-        const newPondFuature = new PondFuture({ targetType, value, zodiac_element: zoldiacId, status: "Active" });
+        const newPondFuature = new PondFuture({ targetType, value, zodiac_element: zoldiacId, status: status });
         await newPondFuature.save();
         return { errCode: 0, message: "Success" };
     } catch (error) {
