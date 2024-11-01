@@ -7,7 +7,7 @@ const { calculateZodiac } = require("../helpers/calculateZodiac");
 const Consultation = require("../models/Consultation");
 const UserPackage = require("../models/UserPackage");
 const AdPackage = require("../models/AdPackage");
-const Transaction = require('../models/transaction');
+const Transaction = require('../models/Transaction');
 
 const handleUserLogin = async (email, password) => {
     try {
