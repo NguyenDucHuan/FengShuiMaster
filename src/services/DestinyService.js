@@ -1,4 +1,4 @@
-const Destiny = require("../models/destiny")
+const Destiny = require("../models/Destiny")
 
 const getAllDestinies = async () => {
     try {

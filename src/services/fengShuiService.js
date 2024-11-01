@@ -1,5 +1,5 @@
 const Direction = require("../models/Direction");
-const Destiny = require("../models/destiny");
+const Destiny = require("../models/Destiny");
 const calculateDirectionDestiny = require("../helpers/calculateDirectionDestiny");
 
 const calculateFengShui = async (year, gender) => {

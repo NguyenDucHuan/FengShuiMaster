@@ -2,7 +2,7 @@ const KoiFishBreed = require("../models/KoiFishBreed");
 const User = require("../models/User");
 const Advertisement = require("../models/Advertisement");
 const Consultation = require("../models/Consultation");
-const Transaction = require("../models/transaction");
+const Transaction = require("../models/Transaction");
 const UserPackage = require("../models/UserPackage");
 const getRevenew = async () => {
     try {

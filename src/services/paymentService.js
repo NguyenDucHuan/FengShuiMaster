@@ -11,7 +11,7 @@ const {
   dateFormat,
 } = require('vnpay');
 const { generateRandomCode } = require('../helpers/generateRandomCode');
-const Transaction = require('../models/transaction');
+const Transaction = require('../models/Transaction');
 const vnpay = new VNPay({
   tmnCode: process.env.VNPAY_TMN_CODE,
   secureSecret: process.env.VNPAY_SECURE_SECRET,

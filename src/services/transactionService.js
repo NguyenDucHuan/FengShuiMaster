@@ -1,4 +1,4 @@
-const Transaction = require('../models/transaction');
+const Transaction = require('../models/Transaction');
 const User = require('../models/User');
 
 const handleIPN = async (transaction) => {
