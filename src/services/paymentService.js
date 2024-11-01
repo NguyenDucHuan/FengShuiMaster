@@ -38,7 +38,8 @@ class PaymentService {
 
     const transactionCode = generateRandomCode(8);
     
-    const expDate = moment().tz('Asia/Ho_Chi_Minh').add(5, 'minutes').toDate();
+    const expDate = moment().tz('Asia/Ho_Chi_Minh').add(8, 'hours').toDate();
+    console.log(expDate);
     const paymentUrl = vnpay.buildPaymentUrl({
       vnp_Amount: amount,
       vnp_IpAddr: ip,
