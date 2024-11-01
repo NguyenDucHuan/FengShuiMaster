@@ -12,6 +12,7 @@ const {
 } = require('vnpay');
 const { generateRandomCode } = require('../helpers/generateRandomCode');
 const Transaction = require('../models/Transaction');
+const moment = require('moment-timezone');
 const vnpay = new VNPay({
   tmnCode: process.env.VNPAY_TMN_CODE,
   secureSecret: process.env.VNPAY_SECURE_SECRET,
@@ -37,8 +38,7 @@ class PaymentService {
 
     const transactionCode = generateRandomCode(8);
     
-    const expDate = new Date().toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' });
-    expDate.setMinutes(expDate.getMinutes() + 5);
+    const expDate = moment().tz('Asia/Ho_Chi_Minh').add(5, 'minutes').toDate();
     const paymentUrl = vnpay.buildPaymentUrl({
       vnp_Amount: amount,
       vnp_IpAddr: ip,

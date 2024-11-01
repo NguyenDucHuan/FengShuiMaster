@@ -24,6 +24,7 @@ app.use(cookieParser());
 const allowedOrigins = [
   'https://koi-pond-system-fe.vercel.app',
   'http://localhost:8080',
+  'http://localhost:3000',
 ];
 
 
