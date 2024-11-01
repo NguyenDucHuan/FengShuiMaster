@@ -9,6 +9,7 @@ const getAllDestinies = async () => {
         return { errCode: 1, message: "Server error" };
     }
 }
+
 const createDestinie = async (name) => {
     try {
         const destiny = new Destiny({ name })
