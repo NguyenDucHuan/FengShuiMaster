@@ -1,4 +1,4 @@
-const destinyService = require('../services/DestinyService');
+const destinyService = require('../services/destinyService');
 
 const getAllDestinies = async (req, res) => {
     try {
