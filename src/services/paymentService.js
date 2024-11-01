@@ -46,7 +46,7 @@ class PaymentService {
       vnp_OrderInfo: description,
       vnp_OrderType: ProductCode.Other,
       vnp_ReturnUrl: returnUrl,
-      vnp_Locale: VnpLocale.VN,
+      vnp_Locale: VnpLocale.EN,
       vnp_BankCode: 'VNBANK',
       vnp_ExpireDate: dateFormat(expDate),
     });
