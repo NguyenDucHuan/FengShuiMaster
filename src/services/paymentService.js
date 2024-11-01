@@ -36,8 +36,8 @@ class PaymentService {
     }
 
     const transactionCode = generateRandomCode(8);
-
-    const expDate = new Date();
+    
+    const expDate = new Date().toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' });
     expDate.setMinutes(expDate.getMinutes() + 5);
     const paymentUrl = vnpay.buildPaymentUrl({
       vnp_Amount: amount,
@@ -46,7 +46,7 @@ class PaymentService {
       vnp_OrderInfo: description,
       vnp_OrderType: ProductCode.Other,
       vnp_ReturnUrl: returnUrl,
-      vnp_Locale: VnpLocale.EN,
+      vnp_Locale: VnpLocale.VN,
       vnp_BankCode: 'VNBANK',
       vnp_ExpireDate: dateFormat(expDate),
     });
