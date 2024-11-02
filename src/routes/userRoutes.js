@@ -13,4 +13,5 @@ router.patch("/user/:id/status", adminController.changeUserStatus);
 router.post("/consultation",verifyToken, userController.createConsultation);
 router.post("/purchase", userController.buyPackage);
 router.post("/minus_balance", verifyToken, userController.minusBalance);
+router.get("/user_package/:id", userController.getUserPackage);
 module.exports = router;

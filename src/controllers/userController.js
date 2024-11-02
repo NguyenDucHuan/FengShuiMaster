@@ -251,16 +251,27 @@ const minusBalance = async (req, res) => {
   }
 }
 
+const getUserPackage = async (req, res) => {
+  try {
+    const {userId} = req.params;
+    const result = await userService.getUserPackage(userId);
+    return res.status(200).json(result);
+  } catch (error) {
+    console.error('Error in getUserPackage:', error);
+    return res.status(500).json({ errCode: 500, message: 'Server error', error: error.message });
+  }
+}
 
 module.exports = {
   handleLogin: handleLogin,
   handleRegister: handleRegister,
-  handleForgotPassword: handleForgotPassword,
-  getProfile: getProfile,
   updateProfile: updateProfile,
   deleteAccount: deleteAccount,
   calculateZodiac: calculateZodiac,
+  handleForgotPassword: handleForgotPassword,
+  getProfile: getProfile,
   createConsultation,
   buyPackage,
-  minusBalance
+  minusBalance,
+  getUserPackage
 };

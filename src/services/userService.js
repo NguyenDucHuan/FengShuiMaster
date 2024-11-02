@@ -214,13 +214,26 @@ const minusBalance = async (id, amount) => {
         }
     })
 }
-
+const getUserPackage = async (userId) => {
+    try {
+        const userPackage = await UserPackage.findOne({ user_id: userId });
+        if (!userPackage) {
+            return { errCode: 1, message: "User package not found" };
+        }
+        return { errCode: 0, message: "Success", userPackage };
+    }
+    catch (error) {
+        console.error("Error in getUsrPackage:", error);
+        return { errCode: 1, message: "Server error" };
+    }
+}
 module.exports = {
+    getMyZodiac: getMyZodiac,
     handleUserLogin,
     checkUserCredential,
     handleUserRegister,
-    getMyZodiac: getMyZodiac,
     createConsultation,
     buyPackage,
-    minusBalance
+    minusBalance,
+    getUserPackage
 };
